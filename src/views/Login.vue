@@ -35,6 +35,7 @@
  
 <script>
 import axios from "axios";
+import router from "../router/index";
 export default {
   name: "Login",
   data() {
@@ -51,14 +52,22 @@ export default {
         if (this.input.password.length >= 6) {
           try {
             console.log("OK");
+
             /*let token = localStorage.getItem("token");
             if (token) {*/
-                const res = await axios.post("http://localhost:3000/auth/login", {
+            const res = await axios.post(
+              "http://localhost:3000/auth/login",
+              {
                 email: this.input.email,
                 password: this.input.password,
-                },/*  {headers: {'Authorization': `Bearer ${token}`}} */);
-            console.log(res.data);
-            localStorage.token = res.data.access_token;
+              } /*  {headers: {'Authorization': `Bearer ${token}`}} */
+            );
+            
+            // localStorage.token = res.data.access_token;
+            localStorage.setItem('jwt-access', res.data.access_token);
+            localStorage.setItem('jwt-refresh', res.data.refresh_token);
+            console.log(res);
+            router.push({ name: 'Home' })
             /*} */
           } catch (error) {
             console.error(error);
