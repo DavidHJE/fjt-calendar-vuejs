@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form>
+    <form @submit="register">
       <h3>Inscription</h3>
 
       <div class="form-group">
@@ -40,7 +40,6 @@
       <button
         type="button"
         class="btn btn-dark btn-lg btn-block"
-        v-on:click="register()"
       >
         S'inscrire
       </button>
