@@ -35,7 +35,10 @@ const routes = [
   {
     path: '/events',
     name: 'events',
-    component: () => import('../views/Events.vue')
+    component: () => import('../views/Events.vue'),
+    meta: {
+      middleware: [auth, refreshToken],
+    }
   }
 ]
 
