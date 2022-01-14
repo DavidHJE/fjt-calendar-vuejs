@@ -67,7 +67,7 @@ export default {
             localStorage.setItem('jwt-access', res.data.access_token);
             localStorage.setItem('jwt-refresh', res.data.refresh_token);
             console.log(res);
-            router.push({ name: 'Events' })
+            router.push({ name: 'events' })
             /*} */
           } catch (error) {
             console.error(error);
